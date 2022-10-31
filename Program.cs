@@ -1,18 +1,18 @@
 using Microsoft.EntityFrameworkCore;
+using pdf_final.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
-var app = builder.Build();
-
 builder.Services.AddDbContext<pdf_final.Data.Contexto>(options =>
 {
-    options.UseSqlServer(builder
-        .Configuration
-        .GetConnectionString("DBpdf_final"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DBpdf_final"));
 });
+
+
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
