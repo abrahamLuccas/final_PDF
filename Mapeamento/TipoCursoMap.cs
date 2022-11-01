@@ -11,7 +11,7 @@ namespace pdf_final.Mapeamento
             builder.HasKey(tc => tc.TipoCursoId);
 
             builder.Property(tc => tc.Tipo).IsRequired();
-            builder.HasIndex(tc => tc.TipoCursoId).IsUnique();
+            builder.HasIndex(tc => tc.Tipo).IsUnique();
 
             builder.HasMany(tc => tc.FormacoesAcademicas).WithOne(tc => tc.TipoCurso).OnDelete(DeleteBehavior.Cascade); 
         }

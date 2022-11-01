@@ -8,7 +8,7 @@
 
             public int UsuarioId { get; set; }
             
-        //public Usuario Usuario { get; set; }
+            public Usuario Usuario { get; set; }
 
             public ICollection<Objetivo> Objetivos { get; set; }
 
