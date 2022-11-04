@@ -21,20 +21,10 @@
         <nav class="teal darken-4">
             <div class="nav-wrapper body-content">
                 <a href="#" class="brand-logo">Montagem de Currículos</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <ul id="nav-mobile" class="right hide-on-med-and-down">                                        
 
-                    @if (!User.Identity.IsAuthenticated)
-                    {
-                        <li><a asp-controller="Usuarios" asp-action="Registro">Registro</a></li>
-                        <li><a asp-controller="Usuarios" asp-action="Login">Login</a></li>
-                    }
-                    else
-                    {
-                        <li><a asp-controller="Curriculos" asp-action="Index">Meus currículos</a></li>
-                        <li><a asp-controller="InformacoesLogin" asp-action="Index">Minhas Informações</a></li>
-                        <li><a asp-controller="Usuarios" asp-action="Logout">Logout</a></li>
-
-                    }
+                        <li><a asp-controller="Curriculos" asp-action="Index">Meus currículos</a></li>                                             
+                    
                 </ul>
             </div>
         </nav>

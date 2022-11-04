@@ -1,0 +1,32 @@
+﻿@model pdf_final.Models.TipoCurso
+
+@{
+    ViewData["Title"] = "Tipos de Cursos Cadastrados";
+}
+
+<h1>Create</h1>
+
+<h4>TipoCurso</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input asp-for="Tipo" id="Tipo" class="validate" />
+                    <label for="Tipo">Tipo de curso</label>
+                    <span asp-validation-for="Tipo" class="red-text darken-3"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-small green darken-1" /> &nbsp;
+                <a asp-action="Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

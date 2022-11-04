@@ -34,15 +34,10 @@ namespace pdf_final.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
-
                     b.HasKey("CurriculoId");
 
                     b.HasIndex("Nome")
                         .IsUnique();
-
-                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Curriculos", (string)null);
                 });
@@ -156,36 +151,6 @@ namespace pdf_final.Migrations
                     b.ToTable("Idiomas", (string)null);
                 });
 
-            modelBuilder.Entity("pdf_final.Models.InformacaoLogin", b =>
-                {
-                    b.Property<int>("InformacaoLoginId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("InformacaoLoginId"), 1L, 1);
-
-                    b.Property<string>("Data")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EnderecoIP")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Horario")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
-
-                    b.HasKey("InformacaoLoginId");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.ToTable("InformacoesLogin", (string)null);
-                });
-
             modelBuilder.Entity("pdf_final.Models.Objetivo", b =>
                 {
                     b.Property<int>("ObjetivoId")
@@ -229,43 +194,6 @@ namespace pdf_final.Migrations
                     b.ToTable("TiposCursos");
                 });
 
-            modelBuilder.Entity("pdf_final.Models.Usuario", b =>
-                {
-                    b.Property<int>("UsuarioId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UsuarioId"), 1L, 1);
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Senha")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("UsuarioId");
-
-                    b.HasIndex("Email")
-                        .IsUnique();
-
-                    b.ToTable("Usuarios", (string)null);
-                });
-
-            modelBuilder.Entity("pdf_final.Models.Curriculo", b =>
-                {
-                    b.HasOne("pdf_final.Models.Usuario", "Usuario")
-                        .WithMany("Curriculos")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Usuario");
-                });
-
             modelBuilder.Entity("pdf_final.Models.ExperienciaProfissional", b =>
                 {
                     b.HasOne("pdf_final.Models.Curriculo", "Curriculo")
@@ -307,17 +235,6 @@ namespace pdf_final.Migrations
                     b.Navigation("Curriculo");
                 });
 
-            modelBuilder.Entity("pdf_final.Models.InformacaoLogin", b =>
-                {
-                    b.HasOne("pdf_final.Models.Usuario", "Usuario")
-                        .WithMany("InformacoesLogin")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Usuario");
-                });
-
             modelBuilder.Entity("pdf_final.Models.Objetivo", b =>
                 {
                     b.HasOne("pdf_final.Models.Curriculo", "Curriculo")
@@ -343,13 +260,6 @@ namespace pdf_final.Migrations
             modelBuilder.Entity("pdf_final.Models.TipoCurso", b =>
                 {
                     b.Navigation("FormacoesAcademicas");
-                });
-
-            modelBuilder.Entity("pdf_final.Models.Usuario", b =>
-                {
-                    b.Navigation("Curriculos");
-
-                    b.Navigation("InformacoesLogin");
                 });
 #pragma warning restore 612, 618
         }
